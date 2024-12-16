@@ -19,7 +19,7 @@ public class BaseClass {
     @BeforeTest
     public void setup() {
         try {
-            // Initialize capabilities
+
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "10");
@@ -31,11 +31,11 @@ public class BaseClass {
             caps.setCapability("appium:connectHardwareKeyboard", true);
 
             // Initialize the Appium Driver
-            URL url = new URL("http://172.24.224.1:4723/");
+            URL url = new URL("http://172.28.0.1:4723/");
             driver = new AndroidDriver<>(url, caps);
 
             // Initialize WebDriverWait with the driver
-            wait = new WebDriverWait(driver, 10); // 10 seconds timeout
+            wait = new WebDriverWait(driver, 10);
             System.out.println("Driver and WebDriverWait initialized successfully!");
         } catch (Exception exp) {
             System.out.println("Cause is: " + exp.getCause());

@@ -1,9 +1,6 @@
 package pages;
-
-import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.Activity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -12,40 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AddInventoryItemPage {
 
     public void addInventoryItem(AppiumDriver<MobileElement> driver, WebDriverWait wait, String category, String name, String enterDate,String expireDate ,String quantity,String fertilizerName) {
-        System.out.println("In forgetPassword method");
+        System.out.println("In add inventory item method");
 
         try {
-
-            WebElement el1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.android.permissioncontroller:id/permission_allow_button")));
-            el1.click();
-            System.out.println("Permission allowed!");
-
-
-            WebElement el2 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.View[@content-desc='تسجيل دخول']")));
-            el2.click();
-            System.out.println("Login button clicked!");
-
-
-            WebElement el3 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]")));
-            el3.click();
-            el3.sendKeys("ali@gmail.com");
-            System.out.println("Email entered!");
-
-            driver.executeScript("mobile: hideKeyboard");
-
-
-            WebElement el4 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]")));
-            el4.click();
-            el4.sendKeys("123456");
-            System.out.println("Password entered!");
-
-            driver.executeScript("mobile: hideKeyboard");
-
-
-            WebElement el6 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//android.view.View[@content-desc='تسجيل الدخول'])[2]")));
-            el6.click();
-            System.out.println("Login button clicked!");
-
 
             WebElement el8 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='Home']")));
             el8.click();
@@ -78,26 +44,22 @@ public class AddInventoryItemPage {
             System.out.println("Enter Name");
 
 
-
             WebElement el14 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[2]")));
             el14.click();
-            WebElement elEnterDateValue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='"+enterDate+"']")));
+            WebElement elEnterDateValue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='" + enterDate + "']")));
             elEnterDateValue.click();
             WebElement elEnterDate = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='حسنًا']")));
             elEnterDate.click();
             System.out.println("Enter Enter Date");
 
 
-
-
             WebElement el15 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[3]")));
             el15.click();
-            WebElement elExpDateValue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='"+expireDate+"']")));
+            WebElement elExpDateValue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='" + expireDate + "']")));
             elExpDateValue.click();
             WebElement elExpDate = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='حسنًا']")));
             elExpDate.click();
             System.out.println("Enter Expiration Date");
-
 
 
             WebElement el16 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.widget.EditText[4]")));
@@ -112,10 +74,62 @@ public class AddInventoryItemPage {
             System.out.println("Clicked in add button");
 
 
+            // Validate errors for multiple conditions
+            boolean validationFailed = false;
+
+            // Check if Name is empty or invalid
+            try {
+                WebElement CategoryError = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='الرجاء ادخل صنف السماد']")));
+                System.out.println("Validation error for Category: " + CategoryError.getAttribute("content-desc"));
+                validationFailed = true;
+            } catch (Exception e) {
+                System.out.println("No validation error for Category");
+            }
+
+            try {
+                WebElement nameError = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='الرجاء ادخل اسم السماد']")));
+                System.out.println("Validation error for Name: " + nameError.getAttribute("content-desc"));
+                validationFailed = true;
+            } catch (Exception e) {
+                System.out.println("No validation error for Name");
+            }
+
+
+            // Check if Quantity is invalid
+            try {
+                WebElement quantityError = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='الرجاء ادخل كمية السماد']")));
+                System.out.println("Validation error for Quantity: " + quantityError.getAttribute("content-desc"));
+                validationFailed = true;
+            } catch (Exception e) {
+                System.out.println("No validation error for Quantity");
+            }
+
+            // Additional validations for other fields (e.g., Date)
+            try {
+                WebElement dateError = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='الرجاء ادخل تاريخ دخول السماد']")));
+                System.out.println("Validation error for Date: " + dateError.getAttribute("content-desc"));
+                validationFailed = true;
+            } catch (Exception e) {
+                System.out.println("No validation error for EnterDate");
+            }
+            try {
+                WebElement dateError = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='الرجاء ادخل تاريخ الانتهاء']")));
+                System.out.println("Validation error for Date: " + dateError.getAttribute("content-desc"));
+                validationFailed = true;
+            } catch (Exception e) {
+                System.out.println("No validation error for ExpirationDate");
+            }
+
+            // validation failed, terminate test.
+            if (validationFailed) {
+                System.out.println("Validation errors occurred. Terminating test. for some reason.!!");
+                return;
+            }
+
+
             WebElement el18 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='"+fertilizerName+"']")));
             el18.click();
 
-//            scrollDown(driver);
 
             WebElement elShowDetails = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@content-desc='عرض التفاصيل']")));
             elShowDetails.click();
@@ -125,7 +139,6 @@ public class AddInventoryItemPage {
             elDepositQuantity.click();
             elDepositQuantity.click();
             elDepositQuantity.click();
-
 
 
             WebElement elSave = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='حفظ']")));
@@ -144,7 +157,6 @@ public class AddInventoryItemPage {
 
             WebElement elReturnToFertilizers = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ImageView[@content-desc='الأسمدة']")));
             elReturnToFertilizers.click();
-
 
 
             WebElement elOpenElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='"+fertilizerName+"']")));
@@ -167,36 +179,21 @@ public class AddInventoryItemPage {
             WebElement elReturnToFertilizersAfterDelete = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ImageView[@content-desc='الأسمدة']")));
             elReturnToFertilizersAfterDelete.click();
 
-            WebElement elRefresh = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.LinearLayout")));
-            elRefresh.click();
 
+//            WebElement elRefresh = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.Button[@content-desc='رجوع']")));
+//            elRefresh.click();
+//            System.out.println("clicked on back button");
+
+//            WebElement elRefresh = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.LinearLayout")));
+//            elRefresh.click();
 
 
             System.out.println("WOOOOOOOW !! Test case executed successfully!");
-
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error during the test execution.");
         }
     }
-    // Method to scroll down the screen
-    private void scrollDown(AppiumDriver<MobileElement> driver) {
-        try {
-            int screenWidth = driver.manage().window().getSize().width;
-            int screenHeight = driver.manage().window().getSize().height;
 
-            int startX = screenWidth / 2;
-            int startY = (int) (screenHeight * 0.8);
-            int endY = (int) (screenHeight * 0.2);
-
-            driver.executeScript("mobile: swipe", ImmutableMap.of(
-                    "direction", "up",
-                    "element", driver.findElement(By.xpath("//android.view.View"))));
-
-            System.out.println("Scrolled down.");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error during scrolling.");
-        }
-    }
 }

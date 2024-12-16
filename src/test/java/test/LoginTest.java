@@ -15,11 +15,11 @@ public class LoginTest {
 
         LoginPage loginPage = new LoginPage();
 
-        // valid cradintial data
+
         loginPage.login(baseClass.driver, baseClass.wait, "ali@gmail.com", "123456");
 
-
 //        loginPage.login(baseClass.driver, baseClass.wait, "ali@gmail.com", "1234566");
+
         baseClass.teardown();
     }
 }
