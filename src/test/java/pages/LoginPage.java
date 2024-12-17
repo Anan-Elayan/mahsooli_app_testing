@@ -1,5 +1,6 @@
 package pages;
 
+import base_class.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,13 +15,10 @@ public class LoginPage {
 
         try {
 
-            WebElement el1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("com.android.permissioncontroller:id/permission_allow_button")));
-            el1.click();
+            BaseClass.clickButton("com.android.permissioncontroller:id/permission_allow_button");
             System.out.println("Permission allowed!");
 
-
-            WebElement el2 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.View[@content-desc='تسجيل دخول']")));
-            el2.click();
+            BaseClass.clickButton("//android.view.View[@content-desc='تسجيل دخول']");
             System.out.println("Login button clicked!");
 
 
@@ -43,16 +41,11 @@ public class LoginPage {
             WebElement el6 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//android.view.View[@content-desc='تسجيل الدخول'])[2]")));
             el6.click();
             System.out.println("Login button clicked!");
+            driver.executeScript("mobile: hideKeyboard");
 
-
-            WebElement el8 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='Home']")));
-            el8.click();
+            BaseClass.clickButton("//android.view.View[@content-desc='Home']");
             System.out.println("Home button clicked after login!");
 
-            // Step 7: Handle the warning dialog and click the "فهمت" button
-//            WebElement el9 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.view.View[@content-desc='فهمت']")));
-//            el9.click();  // Click the "فهمت" button to dismiss the dialog
-//            System.out.println("Clicked on 'فهمت' after warning dialog!");
 
             System.out.println("Test case executed successfully!");
         } catch (Exception e) {

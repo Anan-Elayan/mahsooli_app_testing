@@ -2,25 +2,27 @@ package test;
 
 import base_class.BaseClass;
 import org.testng.annotations.Test;
-import pages.LoginPage;
 import pages.RegisterPage;
 
-public class RegisterValidTest {
+public class RegisterValidTest extends BaseClass {
 
     @Test
-    public void testRegisterValid() {
-        System.out.println("Register login method");
+    public void testValidRegistration() {
+        RegisterPage registerPage = new RegisterPage(wait);
 
-        BaseClass baseClass = new BaseClass();
-        baseClass.setup();
+        // Test 1: Valid input
+//        registerPage.register(driver,"ali@gmail.com", "Ali", "0599112518", "123456", "Nablus");
 
-        RegisterPage registerValidTest = new RegisterPage();
+        // Test 2: Invalid email
+//        registerPage.register(driver,"ali$gmail.com", "ali", "0599112518", "123456", "Nablus");
 
-        // valid cradintial data
-        registerValidTest.registerValid(baseClass.driver, baseClass.wait, "ali@gmail.com", "123456","0599112518","123456","nabluse");
+        // Test 3: Empty fields
+        registerPage.register(driver,"", "", "", "", "");
 
+        // Test 4: Password too short
+//        registerPage.register(driver,"test@mail.com", "Ali", "0599112518", "123", "Nablus");
 
-        baseClass.teardown();
+        // Test 5: Phone number too short
+//        registerPage.register(driver,"test@mail.com", "Ali", "059", "123456", "Nablus");
     }
-
 }

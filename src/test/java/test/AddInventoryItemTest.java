@@ -45,30 +45,18 @@ public class AddInventoryItemTest {
 //        );
 
 
-        // Test with invalid date
+
+        // Test with negative quantity
         addInventoryItemPage.addInventoryItem(
                 baseClass.driver,
                 baseClass.wait,
                 "الفوسفاتية",
                 "test_invalid",
-                "invalid_date",
-                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤, تاريخ اليوم",
-                "10",
+                "3, الثلاثاء، ٣ ديسمبر ٢٠٢٤",
+                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤",
+                "-5",
                 "test_invalid"
         );
-
-
-        // Test with negative quantity
-//        addInventoryItemPage.addInventoryItem(
-//                baseClass.driver,
-//                baseClass.wait,
-//                "الفوسفاتية",
-//                "test_invalid",
-//                "3, الثلاثاء، ٣ ديسمبر ٢٠٢٤",
-//                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤, تاريخ اليوم",
-//                "-5",
-//                "test_invalid"
-//        );
         baseClass.teardown();
     }
 }

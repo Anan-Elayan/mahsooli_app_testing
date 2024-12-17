@@ -4,6 +4,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
@@ -14,7 +17,34 @@ import java.net.URL;
 public class BaseClass {
 
     public AppiumDriver<MobileElement> driver;
-    public WebDriverWait wait;
+    public static WebDriverWait wait;
+
+    public static void hideKeyboardIfOpen(AppiumDriver<MobileElement> driver) {
+        try {
+            driver.hideKeyboard();
+            System.out.println("Keyboard hidden successfully.");
+        } catch (Exception e) {
+            System.out.println("Keyboard was not visible, no need to hide.");
+        }
+    }
+
+    public static void enterText(String locator, String value) {
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+        element.click();
+        element.sendKeys(value);
+    }
+
+    public static void clickButton(String locator) {
+        WebElement button;
+
+        if (locator.contains(":id/")) {
+            button = wait.until(ExpectedConditions.elementToBeClickable(By.id(locator)));
+        } else {
+            button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+        }
+        button.click();
+
+    }
 
     @BeforeTest
     public void setup() {
