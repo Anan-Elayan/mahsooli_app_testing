@@ -20,17 +20,17 @@ public class AddInventoryItemTest {
         AddInventoryItemPage addInventoryItemPage = new AddInventoryItemPage();
 
         // valid input data
-//        addInventoryItemPage.addInventoryItem(
-//                baseClass.driver,
-//                baseClass.wait,
-//                "الفوسفاتية",
-//                "test_4",
-//                "3, الثلاثاء، ٣ ديسمبر ٢٠٢٤",
-//                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤, تاريخ اليوم",
-//                "20",
-//                "test_4"
-//        );
-//
+        addInventoryItemPage.addInventoryItem(
+                baseClass.driver,
+                baseClass.wait,
+                "الفوسفاتية",
+                "test_4",
+                "3, الثلاثاء، ٣ ديسمبر ٢٠٢٤",
+                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤, تاريخ اليوم",
+                "20",
+                "test_4"
+        );
+
 
         // Test with empty name
 //        addInventoryItemPage.addInventoryItem(
@@ -47,16 +47,17 @@ public class AddInventoryItemTest {
 
 
         // Test with negative quantity
-        addInventoryItemPage.addInventoryItem(
-                baseClass.driver,
-                baseClass.wait,
-                "الفوسفاتية",
-                "test_invalid",
-                "3, الثلاثاء، ٣ ديسمبر ٢٠٢٤",
-                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤",
-                "-5",
-                "test_invalid"
-        );
+//        addInventoryItemPage.addInventoryItem(
+//                baseClass.driver,
+//                baseClass.wait,
+//                "الفوسفاتية",
+//                "test_invalid",
+//                "3, الثلاثاء، ٣ ديسمبر ٢٠٢٤",
+//                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤",
+//                "-5",
+//                "test_invalid"
+//        );
         baseClass.teardown();
     }
+    // TODO confirm the add inventory item all test is work correctly. and handle the login page
 }
