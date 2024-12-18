@@ -41,7 +41,7 @@ public class RegisterPage {
         BaseClass.clickButton("com.android.permissioncontroller:id/permission_allow_button");
         BaseClass.clickButton("//android.view.View[@content-desc='إنشاء حساب']");
 
-        // Input Fields
+
         BaseClass.enterText("//android.widget.ScrollView/android.widget.EditText[1]", email);
         BaseClass.enterText("//android.widget.ScrollView/android.widget.EditText[2]", name);
         BaseClass.enterText("//android.widget.ScrollView/android.widget.EditText[3]", phone);
@@ -67,7 +67,7 @@ public class RegisterPage {
 
         if (noErrors) {
             System.out.println("No errors found. Checking for confirmation dialog...");
-            clickDialogButton("//android.view.View[@content-desc='موافق']");
+            clickDialogButton("//android.widget.Button[@content-desc='موافق']");
         } else {
             System.out.println("Registration failed due to input validation errors.");
         }
