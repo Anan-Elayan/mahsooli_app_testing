@@ -71,7 +71,7 @@ public class BaseClass {
             caps.setCapability("appium:connectHardwareKeyboard", true);
 
             // Initialize the Appium Driver
-            URL url = new URL("http://172.28.0.1:4723/");
+            URL url = new URL("http://192.168.88.4:4723/");
             driver = new AndroidDriver<>(url, caps);
 
             // Initialize WebDriverWait with the driver

@@ -7,7 +7,7 @@ import pages.LoginPage;
 
 import static base_class.BaseClass.wait;
 
-public class CultivatedPlantTest {
+public class TestCultivatedPlant {
 
     @Test
     public void addInventoryItemTest() {

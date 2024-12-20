@@ -155,7 +155,7 @@ public class AddInventoryItemPage {
             WebElement elReturnToFertilizersAfterDelete = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ImageView[@content-desc='الأسمدة']")));
             elReturnToFertilizersAfterDelete.click();
 
-            System.out.println("WOOOOOOOW !! Test case executed successfully!");
+            System.out.println("WOOOOOOOW !! Test case executed successfully! 🎉");
         }
         catch (Exception e) {
             e.printStackTrace();

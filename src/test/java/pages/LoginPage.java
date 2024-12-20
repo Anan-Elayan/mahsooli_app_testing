@@ -54,7 +54,7 @@ public class LoginPage {
             }
 
 
-            System.out.println("Test case executed successfully!");
+            System.out.println("Test case executed successfully! 🎉");
 
 
         } catch (Exception e) {

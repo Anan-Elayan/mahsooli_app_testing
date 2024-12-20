@@ -142,6 +142,8 @@ public class CultivatedPlantPage {
             } else {
                 System.out.println("Registration failed due to input validation errors.");
             }
+            System.out.println("Done! Test case executed successfully! 🎉");
+
 
         }catch (Exception e){
             e.printStackTrace();

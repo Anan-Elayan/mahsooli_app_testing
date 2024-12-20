@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.AddInventoryItemPage;
 import pages.LoginPage;
 
-public class AddInventoryItemTest {
+public class TestAddInventoryItem {
 
     @Test
     public void addInventoryItemTest() {

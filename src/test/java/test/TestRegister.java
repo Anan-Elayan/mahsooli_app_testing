@@ -4,7 +4,7 @@ import base_class.BaseClass;
 import org.testng.annotations.Test;
 import pages.RegisterPage;
 
-public class RegisterTest extends BaseClass {
+public class TestRegister extends BaseClass {
 
     @Test
     public void registrationTest() {
