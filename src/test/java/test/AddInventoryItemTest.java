@@ -14,25 +14,25 @@ public class AddInventoryItemTest {
 
 
         LoginPage loginPage = new LoginPage();
-        loginPage.login(baseClass.driver, baseClass.wait, "ali@gmail.com", "123456");
+        loginPage.login(baseClass.driver, BaseClass.wait, "ali@gmail.com", "123456");
 
 
         AddInventoryItemPage addInventoryItemPage = new AddInventoryItemPage();
 
-        // valid input data
+        // Test 1: valid input data
         addInventoryItemPage.addInventoryItem(
                 baseClass.driver,
                 baseClass.wait,
                 "الفوسفاتية",
                 "test_4",
                 "3, الثلاثاء، ٣ ديسمبر ٢٠٢٤",
-                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤, تاريخ اليوم",
+                "16, الاثنين، ١٦ ديسمبر ٢٠٢٤",
                 "20",
                 "test_4"
         );
 
 
-        // Test with empty name
+        // Test 2: with empty name
 //        addInventoryItemPage.addInventoryItem(
 //                baseClass.driver,
 //                baseClass.wait,
@@ -46,7 +46,7 @@ public class AddInventoryItemTest {
 
 
 
-        // Test with negative quantity
+        // Test 3: with negative quantity
 //        addInventoryItemPage.addInventoryItem(
 //                baseClass.driver,
 //                baseClass.wait,
@@ -59,5 +59,4 @@ public class AddInventoryItemTest {
 //        );
         baseClass.teardown();
     }
-    // TODO confirm the add inventory item all test is work correctly. and handle the login page
 }

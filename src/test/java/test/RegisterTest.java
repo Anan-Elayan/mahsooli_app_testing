@@ -4,10 +4,10 @@ import base_class.BaseClass;
 import org.testng.annotations.Test;
 import pages.RegisterPage;
 
-public class RegisterValidTest extends BaseClass {
+public class RegisterTest extends BaseClass {
 
     @Test
-    public void testValidRegistration() {
+    public void registrationTest() {
         RegisterPage registerPage = new RegisterPage(wait);
 
         // Test 1: Valid input

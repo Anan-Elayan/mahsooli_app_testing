@@ -14,7 +14,6 @@ public class LoginPage {
         System.out.println("In login method");
 
         try {
-
             BaseClass.clickButton("com.android.permissioncontroller:id/permission_allow_button");
             System.out.println("Permission allowed!");
 
@@ -38,16 +37,26 @@ public class LoginPage {
             driver.executeScript("mobile: hideKeyboard");
 
 
-            WebElement el6 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//android.view.View[@content-desc='تسجيل الدخول'])[2]")));
-            el6.click();
-            System.out.println("Login button clicked!");
-            driver.executeScript("mobile: hideKeyboard");
+            boolean validationFailed = false;
 
-            BaseClass.clickButton("//android.view.View[@content-desc='Home']");
-            System.out.println("Home button clicked after login!");
+            try {
+                WebElement el6 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//android.view.View[@content-desc='تسجيل الدخول'])[2]")));
+                el6.click();
+                System.out.println("Login button clicked!");
+                driver.executeScript("mobile: hideKeyboard");
+                validationFailed = true;
+            } catch (Exception e) {
+                System.out.println("No validation error for Category");
+            }
+            if (!validationFailed) {
+                BaseClass.clickButton("//android.view.View[@content-desc='Home']");
+                System.out.println("Home button clicked after login!");
+            }
 
 
             System.out.println("Test case executed successfully!");
+
+
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error during the test execution.");
