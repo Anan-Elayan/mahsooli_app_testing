@@ -24,6 +24,14 @@ public class LoginPage {
             WebElement el3 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[1]")));
             el3.click();
             el3.sendKeys(email);
+            String actualValue = el3.getAttribute("text");
+            System.out.println("Text field value: " + actualValue);
+            System.out.println("Clicking email field...");
+            el3.click();
+            System.out.println("Entering email...");
+            el3.sendKeys(email);
+
+            System.out.println("email entered "+email);
             System.out.println("Email entered!");
 
             driver.executeScript("mobile: hideKeyboard");
@@ -32,7 +40,16 @@ public class LoginPage {
             WebElement el4 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.EditText[2]")));
             el4.click();
             el4.sendKeys(password);
-            System.out.println("Password entered!");
+            String actualValue2 = el4.getAttribute("text");
+            System.out.println("Text field value: " + actualValue2);
+            System.out.println("Clicking pass field...");
+            el4.click();
+            System.out.println("Entering password...");
+//            el4.sendKeys(password);
+
+            System.out.println("pass entered "+password);
+            System.out.println("pass entered!");
+
 
             driver.executeScript("mobile: hideKeyboard");
 
@@ -46,7 +63,7 @@ public class LoginPage {
                 driver.executeScript("mobile: hideKeyboard");
                 validationFailed = true;
             } catch (Exception e) {
-                System.out.println("No validation error for Category");
+                System.out.println("No validation error for login");
             }
             if (!validationFailed) {
                 BaseClass.clickButton("//android.view.View[@content-desc='Home']");
